@@ -10,6 +10,9 @@ import {
   YGroup,
   YStack
 } from "tamagui";
+import { ScrollView } from 'react-native';
+import { Tweet } from '../components/Tweet';
+import { TweetInput } from '../components/TweetInput';
 
 import { MySafeAreaView } from "../components/MySafeAreaView";
 import { MyStack } from "../components/MyStack";
@@ -17,75 +20,35 @@ import { MyStack } from "../components/MyStack";
 export default function Home() {
   const router = useRouter();
 
+  const sampleTweets = [
+    {
+      username: 'John Doe',
+      handle: 'johndoe',
+      content: 'Just setting up my Twitter clone! 🚀',
+      timestamp: '2h',
+      likes: 42,
+      retweets: 5,
+      replies: 3,
+    },
+    {
+      username: 'Jane Smith',
+      handle: 'janesmith',
+      content: 'Building something amazing with @expo and @tamagui!',
+      timestamp: '4h',
+      likes: 128,
+      retweets: 12,
+      replies: 8,
+    },
+  ];
+
   return (
-    <MySafeAreaView>
-      <MyStack>
-        <YStack maxWidth={600}>
-          <H1 textAlign="center">Welcome to Tamagui.</H1>
-          <Paragraph textAlign="center">
-            Here&apos;s a basic starter to show navigating from one screen to
-            another.
-          </Paragraph>
-        </YStack>
-
-        <YStack space="$2.5">
-          <Button onPress={() => router.push("/users/testuser")}>
-            Go to user page
-          </Button>
-          <Button onPress={() => router.push("/tabs")}>Go to tabs page</Button>
-        </YStack>
-
-        <YStack space="$5">
-          <YGroup
-            bordered
-            separator={<Separator />}
-            theme="green"
-          >
-            <YGroup.Item>
-              <Link
-                asChild
-                href="https://twitter.com/natebirdman"
-                target="_blank"
-              >
-                <ListItem
-                  hoverTheme
-                  title="Nate"
-                  pressTheme
-                  icon={Twitter}
-                />
-              </Link>
-            </YGroup.Item>
-            <YGroup.Item>
-              <Link
-                asChild
-                href="https://github.com/tamagui/tamagui"
-                target="_blank"
-              >
-                <ListItem
-                  hoverTheme
-                  pressTheme
-                  title="Tamagui"
-                  icon={Github}
-                />
-              </Link>
-            </YGroup.Item>
-            <YGroup.Item>
-              <Link
-                asChild
-                href="https://github.com/ivopr/tamagui-expo"
-                target="_blank"
-              >
-                <ListItem
-                  hoverTheme
-                  pressTheme
-                  title="This Template"
-                  icon={Github}
-                />
-              </Link>
-            </YGroup.Item>
-          </YGroup>
-        </YStack>
-      </MyStack>
-    </MySafeAreaView>
+    <YStack flex={1}>
+      <TweetInput onTweet={() => { }} />
+      <ScrollView>
+        {sampleTweets.map((tweet, index) => (
+          <Tweet key={index} {...tweet} />
+        ))}
+      </ScrollView>
+    </YStack>
   );
 }
