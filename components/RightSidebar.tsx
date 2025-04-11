@@ -30,7 +30,7 @@ const suggestedUsers = [
 export function RightSidebar() {
     return (
         <YStack
-            width={350}
+            width={300}
             padding="$4"
             borderLeftWidth={1}
             borderLeftColor="$gray5"

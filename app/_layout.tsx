@@ -13,9 +13,13 @@ export default function Layout() {
     <TamaguiProvider config={config}>
       <Theme name="light">
         <SafeAreaView style={{ flex: 1 }}>
-          <XStack flex={1}>
-            {!isMobile && <LeftSidebar />}
-            <YStack flex={1} maxWidth={600} marginHorizontal="auto">
+          <XStack flex={1} justifyContent="center" maxWidth={1265} marginHorizontal="auto">
+            {!isMobile && (
+              <XStack width={275}>
+                <LeftSidebar />
+              </XStack>
+            )}
+            <YStack flex={1} maxWidth={600} minWidth={600}>
               <Stack
                 screenOptions={{
                   headerShown: false,
@@ -23,7 +27,11 @@ export default function Layout() {
                 }}
               />
             </YStack>
-            {!isMobile && <RightSidebar />}
+            {!isMobile && (
+              <XStack width={290}>
+                <RightSidebar />
+              </XStack>
+            )}
           </XStack>
         </SafeAreaView>
       </Theme>

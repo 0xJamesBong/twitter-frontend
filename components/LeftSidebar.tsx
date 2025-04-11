@@ -29,7 +29,7 @@ const navItems = [
 export function LeftSidebar() {
     return (
         <YStack
-            width={275}
+            width={250}
             padding="$4"
             borderRightWidth={1}
             borderRightColor="$gray5"
